@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        vertical-align: middle;
+      }
+      .weather-display-grid {
+        display: grid;
+        grid-template-areas: "place  . time" "info info info";
+        grid-template-columns: 1fr 10px 100px;
+        grid-template-rows: 50px auto;
+      }
+      .weather-display-grid .place {
+        grid-area: place;
+      }
+      .weather-display-grid .time {
+        grid-area: time;
+        text-align: right;
+      }
+      .weather-display-grid .info {
+        grid-area: info;
+      }
+      .info-card-container {
+        display: flex;
+      }
+      .info-card {
+        flex: 1;
+        margin: 5px;
+        border: 1px solid lightgrey;
+      }
+      .info-card-title {
+        text-align: center;
+        display: block;
+        background-color: lightgrey;
+      }
+      .info-card-value {
+        text-align: center;
+        display: block;
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="margin-top: 10vh">
+      <div
+        class="card"
+        style="min-width: 200px; max-width: 500px; margin: auto"
+      >
+        <div class="card-header text-center">
+          <h3>Weather App</h3>
+        </div>
+        <div class="card-body">
+          <form onsubmit="onKeyEnter(this, event)">
+            <h5 class="card-title">
+              <input
+                id="txtCity"
+                class="form-control"
+                placeholder="City... "
+                maxlength="64"
+              />
+              <span></span>
+            </h5>
+          </form>
+          <hr class="result" />
+          <div class="weather-display-grid result">
+            <div class="place">
+              <h4>
+                <span class="city"></span>
+                <span class="country"></span>
+              </h4>
+            </div>
+            <div class="time">
+              <div class="local-date"></div>
+              <div class="local-time small"></div>
+            </div>
+            <div class="info">
+              <div class="weather">
+                <img id="wicon" class="weather-icon" src="" />
+                <h4 class="weather-name d-inline"></h4>
+              </div>
+              <details class="more-info">
+                <summary>More Info</summary>
+                <div class="info-card-container" style="display: flex">
+                  <div class="info-card temperature">
+                    <span class="info-card-title">Temperature</span>
+                    <span class="info-card-value"></span>
+                  </div>
+                  <div class="info-card humidity">
+                    <span class="info-card-title">Humidity</span>
+                    <span class="info-card-value"></span>
+                  </div>
+                  <div class="info-card pressure">
+                    <span class="info-card-title">Pressure</span>
+                    <span class="info-card-value"></span>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
